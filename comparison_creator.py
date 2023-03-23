@@ -9,6 +9,10 @@ def mux(a, b, sel):
         return a
     return b
 
+def xor(a, b):
+    if a | b and not (a and b):
+        return 1
+    return 0
 
 def get_nodes():
     inputs = []
