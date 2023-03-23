@@ -6,6 +6,7 @@ For the boolean expression, currently only 'and', 'not', 'or', 'mux', 'nand' are
 'mux' and 'nand' must be typed like functions, with the following syntax:  
 * mux(a, b, sel)  
 * nand(a, b)  
+* xor(a, b)
 
 ...while the already built-in ones ('and', 'not', 'or') can be used as normal.
 
