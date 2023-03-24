@@ -55,7 +55,7 @@ def expression_evaluation(grid, inputs, outputs):
     evaluations = []
 
     for i in range(len(outputs)):
-        ogExpression = input(f"What is boolean expression #{i + 1}? ")
+        ogExpression = input(f"What is the boolean expression for {outputs[i]}? ")
 
         temp = []
         for j in range(len(grid)):
