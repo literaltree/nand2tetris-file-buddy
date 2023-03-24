@@ -53,7 +53,6 @@ def create_grid(nodes):
 
 def expression_evaluation(grid, inputs, outputs):
     evaluations = []
-
     for i in range(len(outputs)):
         ogExpression = input(f"What is the boolean expression for {outputs[i]}? ")
 
