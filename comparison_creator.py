@@ -51,18 +51,20 @@ def create_grid(nodes):
     return total_grid
 
 
-def expression_evaluation(grid, inputs):
-
+def expression_evaluation(grid, inputs, outputs):
     evaluations = []
 
-    ogExpression = input("What is the boolean expression? ")
+    for i in range(len(outputs)):
+        ogExpression = input(f"What is boolean expression #{i + 1}? ")
 
-    for i in range(len(grid)):
-        boolean_expression = deepcopy(ogExpression)
-        for count, j in enumerate(inputs):
-            pattern = r'\b(?<!\w)' + re.escape(j) + r'(?!\w)\b'
-            boolean_expression = re.sub(pattern, str(grid[i][count]), boolean_expression)
-        evaluations.append(int(eval(boolean_expression)))
+        temp = []
+        for j in range(len(grid)):
+            boolean_expression = deepcopy(ogExpression)
+            for count, l in enumerate(inputs):
+                pattern = r'\b(?<!\w)' + re.escape(l) + r'(?!\w)\b'
+                boolean_expression = re.sub(pattern, str(grid[j][count]), boolean_expression)
+            temp.append(int(eval(boolean_expression)))
+        evaluations.append(temp)
 
     return evaluations
 
@@ -145,9 +147,10 @@ def main():
     grid = create_grid(inputs)
     grid = rotated(grid)
 
-    evaluations = expression_evaluation(grid, inputs)
-    for count, i in enumerate(grid):
-        i.append(evaluations[count])
+    evaluations = expression_evaluation(grid, inputs, outputs)
+    for i in range(len(outputs)):
+        for count, j in enumerate(grid): 
+            j.append(evaluations[i][count])
 
     grid = format_grid(grid, inputs, outputs)
 
